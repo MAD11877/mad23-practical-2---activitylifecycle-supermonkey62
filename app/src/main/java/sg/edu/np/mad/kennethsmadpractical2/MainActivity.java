@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     final String TITLE = "Main Activity";
@@ -22,21 +23,20 @@ public class MainActivity extends AppCompatActivity {
         // Preset User
         User Kenneth = new User("Kenneth", "Male, 1.7m, studies at Ngee Ann Polytechnic", 001, false);
         Button follow = findViewById(R.id.btnfollow);
-        if (Kenneth.isFollowed()) {
-            follow.setText("Followed");
-        } else {
-            follow.setText("Follow");
-        }
         follow.setOnClickListener(new View.OnClickListener(){
-            @Override
             public void onClick(View view) {
-                if (Kenneth.isFollowed()) {
+                if (Kenneth.isFollowed())
+                {
                     Kenneth.setFollowed(false);
                     follow.setText("Follow");
-                } else {
+
+                }
+                else
+                {
                     Kenneth.setFollowed(true);
                     follow.setText("Followed");
                 }
+
                 Log.v(TITLE, "Follow button is clicked. Follow status: " + Kenneth.isFollowed());
             }
         });
